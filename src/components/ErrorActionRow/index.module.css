@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  width: calc(100vw - 80px);
+  justify-content: start;
+  margin: 10px 0px;
+}
+
+.left {
+  display: flex;
+  color: #F06C60;
+  font-size: 12px;
+  width: 50%;
+  justify-content: start;
+}
+
+.right {
+  display: flex;
+  width: 50%;
+  justify-content: end;
+  gap: 10px;
+}
+
+.right a {
+  color:#F06C60;
+  font-size: 12px;
+}

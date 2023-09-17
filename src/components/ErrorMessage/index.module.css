@@ -1,0 +1,29 @@
+.errorMessage {
+  display: flex;
+  flex-direction: row;
+  border: solid 1px #F06C60;
+  margin: 0px 40px;
+  border-radius: 4px;
+  padding: 10px;
+  width: calc(100vw - 80px);
+}
+
+.left {
+  display: flex;
+  width: 100px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 100%;
+}
+
+.right > div {
+  display: flex;
+  justify-content: left;
+  width: 100%;
+  color: #F06C60;
+  font-size: 12px;
+}

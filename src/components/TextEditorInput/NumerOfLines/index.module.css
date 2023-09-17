@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.listItem {
+  display: flex;
+  line-height: 16px;
+  font-size: 10px;
+  padding: 8px 4px 0px 4px;
+  justify-content: end;
+  width: 24px;
+  height: 24px;
+  align-items: bottom;
+  color: #AAAAAA;
+}

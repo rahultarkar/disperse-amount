@@ -1,0 +1,13 @@
+.button {
+  width: 100%;
+  border: solid 1px transparent;
+  background-color: #1538A1;
+  color: white;
+  cursor: pointer;
+  padding: 16px;
+  border-radius: 4px;
+}
+
+.button:active, .button:focus {
+  background-color: #6F3FC0;
+}

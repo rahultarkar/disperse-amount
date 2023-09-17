@@ -1,0 +1,26 @@
+.textEditorInputContainer {
+  display: flex;
+  flex-direction: row;
+  width: calc(100vw - 80px);
+  padding: 20px;
+  background-color: #F3F5F9;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+}
+
+.textArea {
+  display: flex;
+  line-height: 24px;
+  font-size: 12px;
+  padding: 4px 4px 4px 4px;
+  overflow-y: hidden;
+  width: 100%;
+  border: none;
+  border-left: solid 1px #E4E4E4;
+  outline: none;
+  background-color: #F3F5F9;
+  font-weight: bolder;
+}

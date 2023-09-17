@@ -1,0 +1,13 @@
+{
+  "react.components.error_message.invalid_entry": "Line {line} wrong amount",
+  "react.components.error_message.duplicate_rows": "Address {address} encountered duplicate in Line: {lines}",
+
+  "react.components.error_action_row.duplicated": "Duplicated",
+  "react.components.error_action_row.keep_the_first_line": "Keep the first line",
+  "react.components.error_action_row.combine_balance": "Combine balance",
+
+  "react.components.button.label.next": "Next",
+
+  "react.containers.disperse.addresses_with_amount": "Addresses with amount",
+  "react.containers.disperse.separted_text": "Separated by ',' or '' or '='"
+}
