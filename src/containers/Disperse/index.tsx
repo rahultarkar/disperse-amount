@@ -39,6 +39,20 @@ export const Disperse: React.FC<DisperseProps> = () => {
     if (validObject.isAmountValid === false) setAmountInvalid(true);
   }
 
+  const keepFirstOne = () => {
+    setValue(keepFirstAddress(value));
+    setAmountInvalid(false);
+    setDuplicates(false);
+    setInputValid(true);
+  }
+
+  const combineBalances = () => {
+    setValue(combineBalance(value));
+    setAmountInvalid(false);
+    setDuplicates(false);
+    setInputValid(true);
+  }
+
   return (
     <div className={styles.container}>
       <label>{addressesWithAmountLabel}</label>
@@ -54,18 +68,8 @@ export const Disperse: React.FC<DisperseProps> = () => {
       <label>{separatedLabel}</label>
       {hasDuplicates && !isAmountInvalid ? (
         <ErrorActionRow
-          keepTheFirstLine={() => {
-            setValue(keepFirstAddress(value));
-            setAmountInvalid(false);
-            setDuplicates(false);
-            setInputValid(true);
-          }}
-          combineBalance={() => {
-            setValue(combineBalance(value));
-            setAmountInvalid(false);
-            setDuplicates(false);
-            setInputValid(true);
-          }}
+          keepTheFirstLine={keepFirstOne}
+          combineBalance={combineBalances}
         />
       ) : null}
       {!isInputValid 
