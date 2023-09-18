@@ -1,6 +1,5 @@
-import I18nKey from './I18nKey';
-import { ADDRESSES } from './consts';
 import { IntlShape } from 'react-intl';
+import I18nKey from './I18nKey';
 import getSeparator from './getSeparator';
 
 const isValidAmount = (amount: string) => {
@@ -12,6 +11,10 @@ const isValidAmount = (amount: string) => {
   return true;
 }
 
+const isValidAddress = (address: string) => {
+  return address.length === 42 && address.startsWith('0x');
+}
+
 const getErrorMessages = (intl: IntlShape, addressesWithAmounts: Array<Array<string>>) => {
   const messages: string[] = [];
   const _obj: {
@@ -21,8 +24,10 @@ const getErrorMessages = (intl: IntlShape, addressesWithAmounts: Array<Array<str
       isValidAmount: boolean,
       isDuplicate: boolean,
       duplicateLines: number[],
+      isValidAddress: boolean,
     }
   } = {};
+
   addressesWithAmounts.forEach(([address, amount], index) => {
     const isValid  = isValidAmount(amount);
 
@@ -42,6 +47,7 @@ const getErrorMessages = (intl: IntlShape, addressesWithAmounts: Array<Array<str
         isDuplicate: false,
         isValidAmount: isValid,
         line: index + 1,
+        isValidAddress: isValidAddress(address)
       }
     } else {
       _obj[address].isDuplicate = true;
@@ -56,6 +62,17 @@ const getErrorMessages = (intl: IntlShape, addressesWithAmounts: Array<Array<str
       }, {
         lines: value.duplicateLines.join(','),
         address,
+      }))
+    }
+  });
+
+  Object.entries(_obj).forEach(([address, value]) => {
+    if (!value.isValidAddress) {
+      messages.push(intl.formatMessage({
+        id: I18nKey.COMPONENTS_ERROR_MESSAGE_INVALID_ADDRESS
+      }, {
+        address,
+        line: value.line
       }))
     }
   });
@@ -79,10 +96,11 @@ export default (intl: IntlShape, input: string) => {
   
   return {
     isInputValid: addressesWithAmounts.every(([address, amount]) => {
-      return _obj[address] === 1 && isValidAmount(amount);
+      return _obj[address] === 1 && isValidAmount(amount) && isValidAddress(address);
     }),
     errorMessages: getErrorMessages(intl, addressesWithAmounts),
     hasDuplicates: addressesWithAmounts.some(([address]) => _obj[address] > 1),
-    isAmountValid: addressesWithAmounts.every(([_, amount]) => isValidAmount(amount))
+    isAmountValid: addressesWithAmounts.every(([_, amount]) => isValidAmount(amount)),
+    isValidAddress: addressesWithAmounts.every(([address]) => isValidAddress(address)),
   }
 }

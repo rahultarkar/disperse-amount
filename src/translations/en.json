@@ -1,6 +1,7 @@
 {
   "react.components.error_message.invalid_entry": "Line {line} wrong amount",
   "react.components.error_message.duplicate_rows": "Address {address} encountered duplicate in Line: {lines}",
+  "react.components.error_message.invalid_address": "Invalid address {address} in Line: {line}. Address always starts with '0x' and has 42 characters",
 
   "react.components.error_action_row.duplicated": "Duplicated",
   "react.components.error_action_row.keep_the_first_line": "Keep the first line",
